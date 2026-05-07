@@ -414,9 +414,10 @@
   /* RESPONSIVE */
   @media (max-width: 768px) {
     #quote .container > div { grid-template-columns: 1fr !important; gap: 2.5rem !important; }
-
     nav { padding: 1rem 1.2rem; }
     .nav-links { display: none; }
+    .services-grid { grid-template-columns: 1fr !important; }
+    .service-card { padding: 1.8rem 1.5rem; }
     .gallery-grid {
       grid-template-columns: repeat(2, 1fr);
       grid-template-rows: repeat(3, 200px);
@@ -424,11 +425,84 @@
     .why-grid { grid-template-columns: 1fr; }
     .why-img { display: none; }
     .strip { gap: 1rem; }
+    #areas > div > div:last-child { grid-template-columns: 1fr !important; }
+    .hero-title { font-size: clamp(3rem, 14vw, 5rem); }
+    .contact-details { gap: 1.5rem; }
   }
   @media (max-width: 480px) {
+    .services-grid { grid-template-columns: 1fr !important; }
     .gallery-grid {
       grid-template-columns: 1fr 1fr;
       grid-template-rows: repeat(3, 160px);
+    }
+  }
+
+  /* TESTIMONIALS TICKER */
+  @keyframes ticker {
+    0%   { transform: translateX(0); }
+    100% { transform: translateX(-50%); }
+  }
+  .ticker-track:hover { animation-play-state: paused; }
+  .review-card {
+    background: rgba(255,255,255,0.03);
+    border: 1px solid rgba(255,255,255,0.07);
+    border-radius: 4px;
+    padding: 2rem;
+    width: 320px;
+    flex-shrink: 0;
+    transition: border-color 0.3s, background 0.3s;
+  }
+  .review-card:hover {
+    background: rgba(61,107,79,0.08);
+    border-color: rgba(78,136,98,0.3);
+  }
+  .review-stars {
+    color: var(--green-light);
+    font-size: 0.95rem;
+    letter-spacing: 0.05em;
+    margin-bottom: 1rem;
+  }
+  .review-text {
+    font-size: 0.9rem;
+    color: var(--concrete);
+    line-height: 1.65;
+    font-weight: 300;
+    font-style: italic;
+    margin-bottom: 1.2rem;
+  }
+  .review-author {
+    font-size: 0.8rem;
+    font-weight: 500;
+    color: var(--off-white);
+    letter-spacing: 0.04em;
+  }
+  .review-author span {
+    color: var(--warm-grey);
+    font-weight: 300;
+  }
+  /* AREA ITEMS */
+  .area-item {
+    font-size: 0.88rem;
+    color: var(--concrete);
+    padding: 0.5rem 0;
+    border-bottom: 1px solid rgba(255,255,255,0.05);
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-weight: 300;
+  }
+  .area-item::before {
+    content: '';
+    width: 5px;
+    height: 5px;
+    border-radius: 50%;
+    background: var(--green);
+    flex-shrink: 0;
+  }
+  @media (max-width: 768px) {
+    #areas .container > div,
+    #areas > div > div:last-child > div:first-child + div {
+      grid-template-columns: 1fr !important;
     }
   }
 </style>
@@ -441,6 +515,8 @@
   <ul class="nav-links">
     <li><a href="#services">Services</a></li>
     <li><a href="#gallery">Gallery</a></li>
+    <li><a href="#testimonials">Reviews</a></li>
+    <li><a href="#areas">Areas</a></li>
     <li><a href="#why">About</a></li>
     <li><a href="#quote" class="nav-cta">Get a Quote</a></li>
   </ul>
@@ -591,6 +667,182 @@
             <div class="why-point-title">Transparent Pricing</div>
             <p class="why-point-desc">What we quote is what you pay. We provide detailed, itemised quotes so you know exactly what you're getting.</p>
           </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- TESTIMONIALS -->
+<section id="testimonials" style="background: var(--coal); padding: 6rem 2rem; overflow: hidden;">
+  <div style="max-width:1100px; margin:0 auto;">
+    <p class="section-label" style="text-align:center;">What Clients Say</p>
+    <h2 class="section-title" style="text-align:center; margin-bottom:3.5rem;">TRUSTED BY<br>MELBOURNE HOMEOWNERS</h2>
+  </div>
+
+  <!-- Scrolling ticker wrapper -->
+  <div style="position:relative; overflow:hidden;">
+    <!-- fade edges -->
+    <div style="position:absolute; left:0; top:0; bottom:0; width:120px; background:linear-gradient(to right, var(--coal), transparent); z-index:2; pointer-events:none;"></div>
+    <div style="position:absolute; right:0; top:0; bottom:0; width:120px; background:linear-gradient(to left, var(--coal), transparent); z-index:2; pointer-events:none;"></div>
+
+    <div class="ticker-track" style="display:flex; gap:1.5rem; width:max-content; animation: ticker 40s linear infinite;">
+
+      <!-- Review cards - set repeated twice for seamless loop -->
+      <div class="review-card">
+        <div class="review-stars">★★★★★</div>
+        <p class="review-text">"Seoane did our exposed aggregate driveway in Frankston and it looks absolutely incredible. Clean edges, perfect finish — highly recommend."</p>
+        <div class="review-author">James T. <span>— Frankston</span></div>
+      </div>
+      <div class="review-card">
+        <div class="review-stars">★★★★★</div>
+        <p class="review-text">"Got three quotes and Seoane was the most professional by far. Turned up on time, finished early, price was exactly as quoted. Couldn't be happier."</p>
+        <div class="review-author">Michelle R. <span>— Bayside</span></div>
+      </div>
+      <div class="review-card">
+        <div class="review-stars">★★★★★</div>
+        <p class="review-text">"Our new house slab was poured perfectly. The steel reinforcement work was done properly — you can tell these guys know what they're doing."</p>
+        <div class="review-author">Dan & Karen W. <span>— Mornington</span></div>
+      </div>
+      <div class="review-card">
+        <div class="review-stars">★★★★★</div>
+        <p class="review-text">"Brilliant job on our backyard concrete pad. Smooth, level, well-finished. Great communication from start to finish."</p>
+        <div class="review-author">Sarah M. <span>— Chelsea</span></div>
+      </div>
+      <div class="review-card">
+        <div class="review-stars">★★★★★</div>
+        <p class="review-text">"The driveway looks better than I imagined. All the neighbours have been asking who did it. Will definitely use again for our back patio."</p>
+        <div class="review-author">Tony B. <span>— Seaford</span></div>
+      </div>
+      <div class="review-card">
+        <div class="review-stars">★★★★★</div>
+        <p class="review-text">"Fast, reliable, and did an immaculate job. The exposed aggregate they recommended looks premium — way better than plain concrete would have."</p>
+        <div class="review-author">Lisa C. <span>— Mount Eliza</span></div>
+      </div>
+
+      <!-- Duplicate for seamless loop -->
+      <div class="review-card">
+        <div class="review-stars">★★★★★</div>
+        <p class="review-text">"Seoane did our exposed aggregate driveway in Frankston and it looks absolutely incredible. Clean edges, perfect finish — highly recommend."</p>
+        <div class="review-author">James T. <span>— Frankston</span></div>
+      </div>
+      <div class="review-card">
+        <div class="review-stars">★★★★★</div>
+        <p class="review-text">"Got three quotes and Seoane was the most professional by far. Turned up on time, finished early, price was exactly as quoted. Couldn't be happier."</p>
+        <div class="review-author">Michelle R. <span>— Bayside</span></div>
+      </div>
+      <div class="review-card">
+        <div class="review-stars">★★★★★</div>
+        <p class="review-text">"Our new house slab was poured perfectly. The steel reinforcement work was done properly — you can tell these guys know what they're doing."</p>
+        <div class="review-author">Dan & Karen W. <span>— Mornington</span></div>
+      </div>
+      <div class="review-card">
+        <div class="review-stars">★★★★★</div>
+        <p class="review-text">"Brilliant job on our backyard concrete pad. Smooth, level, well-finished. Great communication from start to finish."</p>
+        <div class="review-author">Sarah M. <span>— Chelsea</span></div>
+      </div>
+      <div class="review-card">
+        <div class="review-stars">★★★★★</div>
+        <p class="review-text">"The driveway looks better than I imagined. All the neighbours have been asking who did it. Will definitely use again for our back patio."</p>
+        <div class="review-author">Tony B. <span>— Seaford</span></div>
+      </div>
+      <div class="review-card">
+        <div class="review-stars">★★★★★</div>
+        <p class="review-text">"Fast, reliable, and did an immaculate job. The exposed aggregate they recommended looks premium — way better than plain concrete would have."</p>
+        <div class="review-author">Lisa C. <span>— Mount Eliza</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICE AREAS MAP -->
+<section id="areas" style="background: var(--mid); padding: 6rem 2rem;">
+  <div style="max-width:1100px; margin:0 auto;">
+    <p class="section-label">Where We Work</p>
+    <h2 class="section-title" style="margin-bottom:0.8rem;">SERVICE AREAS</h2>
+    <p style="color:var(--warm-grey); font-size:0.92rem; margin-bottom:3rem; font-weight:300;">Based in Melbourne — servicing south-east suburbs, Mornington Peninsula, and Bayside.</p>
+
+    <div style="display:grid; grid-template-columns:1fr 1fr; gap:3rem; align-items:start;">
+
+      <!-- Map SVG -->
+      <div style="position:relative;">
+        <svg viewBox="0 0 400 500" xmlns="http://www.w3.org/2000/svg" style="width:100%; border:1px solid rgba(255,255,255,0.07); border-radius:4px; background:#141a16;">
+          <!-- Port Phillip Bay -->
+          <ellipse cx="195" cy="240" rx="75" ry="100" fill="#1a2d20" opacity="0.6"/>
+          <text x="195" y="248" text-anchor="middle" fill="rgba(255,255,255,0.2)" font-size="9" font-family="DM Sans, sans-serif">Port Phillip Bay</text>
+
+          <!-- Melbourne CBD dot -->
+          <circle cx="155" cy="145" r="6" fill="#4e8862"/>
+          <text x="165" y="149" fill="#b8bdb5" font-size="10" font-family="DM Sans, sans-serif" font-weight="500">Melbourne CBD</text>
+
+          <!-- Service zone highlight -->
+          <path d="M155,145 L120,180 L100,220 L105,270 L130,310 L170,350 L220,370 L270,360 L300,320 L310,270 L290,220 L260,175 L210,150 Z" fill="rgba(61,107,79,0.18)" stroke="rgba(78,136,98,0.5)" stroke-width="1.5" stroke-dasharray="4,3"/>
+
+          <!-- Area dots -->
+          <circle cx="140" cy="185" r="4" fill="#4e8862" opacity="0.8"/>
+          <text x="148" y="189" fill="#b8bdb5" font-size="9" font-family="DM Sans, sans-serif">Bayside</text>
+
+          <circle cx="118" cy="220" r="4" fill="#4e8862" opacity="0.8"/>
+          <text x="126" y="224" fill="#b8bdb5" font-size="9" font-family="DM Sans, sans-serif">Frankston</text>
+
+          <circle cx="125" cy="265" r="4" fill="#4e8862" opacity="0.8"/>
+          <text x="133" y="269" fill="#b8bdb5" font-size="9" font-family="DM Sans, sans-serif">Mornington</text>
+
+          <circle cx="145" cy="310" r="4" fill="#4e8862" opacity="0.8"/>
+          <text x="153" y="314" fill="#b8bdb5" font-size="9" font-family="DM Sans, sans-serif">Mt Eliza</text>
+
+          <circle cx="170" cy="350" r="4" fill="#4e8862" opacity="0.8"/>
+          <text x="178" y="354" fill="#b8bdb5" font-size="9" font-family="DM Sans, sans-serif">Rosebud</text>
+
+          <circle cx="220" cy="365" r="4" fill="#4e8862" opacity="0.8"/>
+          <text x="228" y="369" fill="#b8bdb5" font-size="9" font-family="DM Sans, sans-serif">Rye</text>
+
+          <circle cx="265" cy="355" r="4" fill="#4e8862" opacity="0.8"/>
+          <text x="273" y="359" fill="#b8bdb5" font-size="9" font-family="DM Sans, sans-serif">Sorrento</text>
+
+          <circle cx="295" cy="315" r="4" fill="#4e8862" opacity="0.8"/>
+          <text x="260" y="306" fill="#b8bdb5" font-size="9" font-family="DM Sans, sans-serif">Portsea</text>
+
+          <circle cx="200" cy="185" r="4" fill="#4e8862" opacity="0.8"/>
+          <text x="208" y="189" fill="#b8bdb5" font-size="9" font-family="DM Sans, sans-serif">Chelsea</text>
+
+          <circle cx="245" cy="195" r="4" fill="#4e8862" opacity="0.8"/>
+          <text x="253" y="199" fill="#b8bdb5" font-size="9" font-family="DM Sans, sans-serif">Carrum</text>
+
+          <!-- Legend -->
+          <rect x="20" y="440" width="12" height="12" rx="2" fill="rgba(61,107,79,0.4)" stroke="rgba(78,136,98,0.5)" stroke-width="1"/>
+          <text x="38" y="451" fill="#7a8275" font-size="9" font-family="DM Sans, sans-serif">Service Zone</text>
+          <circle cx="26" cy="468" r="4" fill="#4e8862"/>
+          <text x="38" y="472" fill="#7a8275" font-size="9" font-family="DM Sans, sans-serif">Suburb Served</text>
+        </svg>
+      </div>
+
+      <!-- Suburb list -->
+      <div>
+        <p style="font-size:0.78rem; letter-spacing:0.15em; text-transform:uppercase; color:var(--green-light); margin-bottom:1.5rem;">Suburbs We Service</p>
+        <div style="display:grid; grid-template-columns:1fr 1fr; gap:0.6rem 1.5rem;">
+          <div class="area-item">Bayside</div>
+          <div class="area-item">Frankston</div>
+          <div class="area-item">Mornington</div>
+          <div class="area-item">Mount Eliza</div>
+          <div class="area-item">Mount Martha</div>
+          <div class="area-item">Rosebud</div>
+          <div class="area-item">Rye</div>
+          <div class="area-item">Sorrento</div>
+          <div class="area-item">Portsea</div>
+          <div class="area-item">Chelsea</div>
+          <div class="area-item">Carrum Downs</div>
+          <div class="area-item">Seaford</div>
+          <div class="area-item">Langwarrin</div>
+          <div class="area-item">Cranbourne</div>
+          <div class="area-item">Dandenong</div>
+          <div class="area-item">Greater Melbourne</div>
+        </div>
+        <div style="margin-top:2rem; padding:1.5rem; background:rgba(61,107,79,0.1); border:1px solid rgba(78,136,98,0.25); border-radius:3px;">
+          <p style="font-size:0.85rem; color:var(--off-white); font-weight:500; margin-bottom:0.4rem;">Not on the list?</p>
+          <p style="font-size:0.83rem; color:var(--warm-grey); line-height:1.6; font-weight:300;">We travel for the right job. Get in touch and we'll let you know if we can cover your area.</p>
+          <a href="#quote" style="display:inline-block; margin-top:1rem; font-size:0.78rem; letter-spacing:0.12em; text-transform:uppercase; color:var(--green-light); text-decoration:none; border-bottom:1px solid rgba(78,136,98,0.4); padding-bottom:2px;">Get a Quote →</a>
         </div>
       </div>
     </div>
