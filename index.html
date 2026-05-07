@@ -13,6 +13,7 @@
 <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
 <style>
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html, body { overflow-x: hidden; max-width: 100%; }
 
   :root {
     --coal: #111412;
@@ -787,7 +788,7 @@
     <div style="position:absolute; left:0; top:0; bottom:0; width:120px; background:linear-gradient(to right, var(--coal), transparent); z-index:2; pointer-events:none;"></div>
     <div style="position:absolute; right:0; top:0; bottom:0; width:120px; background:linear-gradient(to left, var(--coal), transparent); z-index:2; pointer-events:none;"></div>
 
-    <div class="ticker-track" style="display:flex; gap:1.5rem; width:max-content; animation: ticker 40s linear infinite;">
+    <div class="ticker-track" style="will-change:transform;" style="display:flex; gap:1.5rem; width:max-content; animation: ticker 40s linear infinite;">
 
       <!-- Review cards - set repeated twice for seamless loop -->
       <div class="review-card">
