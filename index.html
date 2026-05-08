@@ -450,14 +450,18 @@
     0%   { transform: translateX(0); }
     100% { transform: translateX(-50%); }
   }
-  .ticker-track:hover { animation-play-state: paused; }
+  #tickerTrack:hover { animation-play-state: paused; }
   .review-card {
     background: rgba(255,255,255,0.03);
     border: 1px solid rgba(255,255,255,0.07);
     border-radius: 4px;
-    padding: 2rem;
-    width: 320px;
+    padding: 1.8rem;
+    width: 300px;
+    min-width: 300px;
+    max-width: 300px;
     flex-shrink: 0;
+    flex-grow: 0;
+    display: block;
     transition: border-color 0.3s, background 0.3s;
   }
   .review-card:hover {
@@ -776,21 +780,20 @@
 
 
 <!-- TESTIMONIALS -->
-<section id="testimonials" style="background: var(--coal); padding: 6rem 2rem; overflow: hidden;">
-  <div style="max-width:1100px; margin:0 auto;">
+<section id="testimonials" style="background: var(--coal); padding: 6rem 0; overflow: hidden;">
+  <div style="max-width:1100px; margin:0 auto; padding: 0 2rem;">
     <p class="section-label" style="text-align:center;">What Clients Say</p>
     <h2 class="section-title" style="text-align:center; margin-bottom:3.5rem;">TRUSTED BY<br>MELBOURNE HOMEOWNERS</h2>
   </div>
 
-  <!-- Scrolling ticker wrapper -->
   <div style="position:relative; overflow:hidden;">
     <!-- fade edges -->
-    <div style="position:absolute; left:0; top:0; bottom:0; width:120px; background:linear-gradient(to right, var(--coal), transparent); z-index:2; pointer-events:none;"></div>
-    <div style="position:absolute; right:0; top:0; bottom:0; width:120px; background:linear-gradient(to left, var(--coal), transparent); z-index:2; pointer-events:none;"></div>
+    <div style="position:absolute; left:0; top:0; bottom:0; width:80px; background:linear-gradient(to right, var(--coal), transparent); z-index:2; pointer-events:none;"></div>
+    <div style="position:absolute; right:0; top:0; bottom:0; width:80px; background:linear-gradient(to left, var(--coal), transparent); z-index:2; pointer-events:none;"></div>
 
-    <div class="ticker-track" style="will-change:transform;" style="display:flex; gap:1.5rem; width:max-content; animation: ticker 40s linear infinite;">
+    <div id="tickerTrack" style="display:flex; gap:1.2rem; width:max-content; animation: ticker 35s linear infinite; will-change:transform;">
 
-      <!-- Review cards - set repeated twice for seamless loop -->
+      <!-- 6 cards -->
       <div class="review-card">
         <div class="review-stars">★★★★★</div>
         <p class="review-text">"Seoane did our exposed aggregate driveway in Frankston and it looks absolutely incredible. Clean edges, perfect finish — highly recommend."</p>
@@ -804,7 +807,7 @@
       <div class="review-card">
         <div class="review-stars">★★★★★</div>
         <p class="review-text">"Our new house slab was poured perfectly. The steel reinforcement work was done properly — you can tell these guys know what they're doing."</p>
-        <div class="review-author">Dan & Karen W. <span>— Mornington</span></div>
+        <div class="review-author">Dan &amp; Karen W. <span>— Mornington</span></div>
       </div>
       <div class="review-card">
         <div class="review-stars">★★★★★</div>
@@ -822,7 +825,7 @@
         <div class="review-author">Lisa C. <span>— Mount Eliza</span></div>
       </div>
 
-      <!-- Duplicate for seamless loop -->
+      <!-- Duplicate set for seamless loop -->
       <div class="review-card">
         <div class="review-stars">★★★★★</div>
         <p class="review-text">"Seoane did our exposed aggregate driveway in Frankston and it looks absolutely incredible. Clean edges, perfect finish — highly recommend."</p>
@@ -836,7 +839,7 @@
       <div class="review-card">
         <div class="review-stars">★★★★★</div>
         <p class="review-text">"Our new house slab was poured perfectly. The steel reinforcement work was done properly — you can tell these guys know what they're doing."</p>
-        <div class="review-author">Dan & Karen W. <span>— Mornington</span></div>
+        <div class="review-author">Dan &amp; Karen W. <span>— Mornington</span></div>
       </div>
       <div class="review-card">
         <div class="review-stars">★★★★★</div>
